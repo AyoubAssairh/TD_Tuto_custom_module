@@ -4,18 +4,38 @@
 
 
 <form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">De quel produit souhaitez vous nous parler ?</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Votre produit">
-  </div>
   <div class="input-group">
     <div class="input-group-prepend">
         <span class="input-group-text">Votre commentaire</span>
     </div>
-  <textarea class="form-control" aria-label="With textarea" placeholder="Dites nous tout !"></textarea>
+  <textarea value="{if isset($commentary)}{$commentary}{/if}" 
+            class="form-control" 
+            aria-label="With textarea" 
+            placeholder="Dites nous tout !"></textarea>
 </div>
 
-  
-  <button type="submit" class="btn btn-primary">Envoyer !</button>
+<div class="dropdown">
+  <button   value="rate" 
+            class="btn btn-secondary dropdown-toggle" 
+            type="button" 
+            id="dropdownMenuButton" 
+            data-toggle="dropdown" 
+            aria-haspopup="true" 
+            aria-expanded="false">
+    Donnez nous une note !
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" value="1" href="#">1</a>
+    <a class="dropdown-item" value="2" href="#">2</a>
+    <a class="dropdown-item" value="3" href="#">3</a>
+    <a class="dropdown-item" value="4" href="#">4</a>
+    <a class="dropdown-item" value="5" href="#">5</a>
+  </div>
+</div>
+
+<button type="button" 
+        name="Envoyer" 
+        value="submit" 
+        class="btn btn-primary">Envoyer</button>
 </form>
 {/block}

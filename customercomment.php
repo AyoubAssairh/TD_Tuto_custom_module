@@ -1,7 +1,10 @@
 <?php
+
+    require 'models/commentmodel.php';
+
     class customercomment extends Module
     {
-        // TODO Champs obligatoire pour acceder au module dans le back office
+        // ? Lines required to display module in the back office
         public function __construct()
         {
             $this->name = 'customercomment';
@@ -15,7 +18,7 @@
 
         }
 
-        // TODO Fonction déclenchée quand l'action est lancée
+        // ? Main Function
         public function install()
         {
             return parent::install()
@@ -23,6 +26,7 @@
                 && $this->installDb();
         }
 
+        // ? Interactions with data base
         public function installDb()
         {
             return Db::getInstance()->execute('
@@ -35,8 +39,8 @@
 		      ) ENGINE = ' . _MYSQL_ENGINE_ . ' CHARACTER SET utf8 COLLATE utf8_general_ci;');
         }
 
-        // TODO Permet de lier le fichier css
-        // TODO Penser à greffer dans apparence > position
+        // ? Link to the style file
+        // ? Remember to "greffer" in "apparence > postion in the back office
         public function hookDisplayHeader()
         {
             $this->context->controller->addCSS($this->_path . 'views/css/customercomment.css');
