@@ -16,6 +16,8 @@
 
             parent::__construct();
 
+            $this->installDb();
+
         }
 
         // ? Main Function
@@ -31,7 +33,7 @@
         {
             return Db::getInstance()->execute('
 		      CREATE TABLE IF NOT EXISTS `' . _DB_PREFIX_ . 'comment` (
-			    `id_comment` INT PRIMARY KEY,
+			    `id_comment` INT PRIMARY KEY AUTO_INCREMENT,
 			    `comment` varchar(1000),
 			    `date_add` DATE,
 			    `id_customer` INT,
