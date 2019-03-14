@@ -1,4 +1,12 @@
-.links  {
+.links {
     flex-direction: row;
 }
 
+body {
+    background: black;
+}
+
+.flex-colum {
+    display: flex;
+    
+}

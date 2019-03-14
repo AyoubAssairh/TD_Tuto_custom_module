@@ -15,7 +15,7 @@
 
         }
 
-        // TODO Fonction déclenchée quand l'action est lancé
+        // TODO Fonction déclenchée quand l'action est lancée
         public function install()
         {
             return parent::install()
