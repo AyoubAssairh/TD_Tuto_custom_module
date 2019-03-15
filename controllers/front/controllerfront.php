@@ -18,7 +18,7 @@ class customercommentcontrollerfrontModuleFrontController extends ModuleFrontCon
         
         if (Tools::isSubmit('submitSend'))
         {
-            $myModels = new commentmodel();
+            $myModels = new CusCommentModel();
 
             // $this->context->smarty->assign('comment', $comment);
             // $this->context->smarty->assign('rate', $rate);
@@ -30,7 +30,6 @@ class customercommentcontrollerfrontModuleFrontController extends ModuleFrontCon
             $myModels->add();
 
         }
-
 
         // ? path to link the front view
         $this->setTemplate('module:customercomment/views/templates/front/comments.tpl');

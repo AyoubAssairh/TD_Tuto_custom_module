@@ -26,14 +26,7 @@
             return parent::install()
                 && $this->registerHook('displayCustomerAccount')
                 && $this->installDb()
-                && $this->fetchDb();
-        }
-
-        public function fetchDb()
-        {
-            return Db::getInstance()->executeS('
-                SELECT * FROM ps_comment;
-            ');
+                && $this->registerHook('displayHome');
         }
 
         // ? Interactions with data base
@@ -65,8 +58,20 @@
             $this->context->controller->addCSS($this->_path . 'views/css/customercomment.css');
         }
 
+        // ? Display button "Laisser un commentaire" in customerAccount
         public function hookDisplayCustomerAccount($params)
         {
             return $this->display(__FILE__, 'my-account.tpl');
         }
+
+        // ? Display Carousel in the HomePage
+        public function hookDisplayHome($params)
+        {
+            $result = Db::getInstance()->executeS(
+                'SELECT a.*, b.firstname, b.lastname FROM '._DB_PREFIX_.'comment a JOIN '._DB_PREFIX_.'customer b ON a.id_customer = b.id_customer');
+            
+            $this->context->smarty->assign('comments', $result);
+            return $this->display(__FILE__, 'carouselHome.tpl');
+        }
+
     }
