@@ -13,11 +13,9 @@ class customercommentcontrollerfrontModuleFrontController extends ModuleFrontCon
      * @see FrontController::initContent()
      */
     
-
     public function initContent()
     {   
         
-
         if (Tools::isSubmit('submitSend'))
         {
             $myModels = new commentmodel();
@@ -30,7 +28,9 @@ class customercommentcontrollerfrontModuleFrontController extends ModuleFrontCon
             $myModels->id_customer = $this->context->customer->id;
 
             $myModels->add();
+
         }
+
 
         // ? path to link the front view
         $this->setTemplate('module:customercomment/views/templates/front/comments.tpl');

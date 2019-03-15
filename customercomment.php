@@ -1,6 +1,6 @@
 <?php
 
-    require 'models/commentmodel.php';
+    require_once 'models/CusCommentModel.php';
 
     class customercomment extends Module
     {
@@ -25,7 +25,15 @@
         {
             return parent::install()
                 && $this->registerHook('displayCustomerAccount')
-                && $this->installDb();
+                && $this->installDb()
+                && $this->fetchDb();
+        }
+
+        public function fetchDb()
+        {
+            return Db::getInstance()->executeS('
+                SELECT * FROM ps_comment;
+            ');
         }
 
         // ? Interactions with data base
@@ -40,6 +48,15 @@
 			    `rate` INT
 		      ) ENGINE = ' . _MYSQL_ENGINE_ . ' CHARACTER SET utf8 COLLATE utf8_general_ci;');
         }
+        
+        public $tabs = array(
+            array(
+                'name' => 'Commentaires',
+                'class_name' => 'AdminCustomerback',
+                'visible' => true,
+                'parent_class_name' => 'ShopParameters',
+        ));
+    
 
         // ? Link to the style file
         // ? Remember to "greffer" in "apparence > postion in the back office
