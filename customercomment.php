@@ -52,7 +52,7 @@
     
 
         // ? Link to the style file
-        // ? Remember to "greffer" in "apparence > postion in the back office
+        // ! Remember to "greffer" in "apparence > postion in the back office
         public function hookDisplayHeader()
         {
             $this->context->controller->addCSS($this->_path . 'views/css/customercomment.css');
@@ -65,6 +65,7 @@
         }
 
         // ? Display Carousel in the HomePage
+        // ! Remember to "greffer" in "apparence > postion in the back office
         public function hookDisplayHome($params)
         {
             $result = Db::getInstance()->executeS(
